@@ -4,9 +4,9 @@ const JWT = require("jsonwebtoken")
 //register
 const registerController=async(req,res)=>{
     try {
-        const {userName,email,password,phone,address}=req.body;
+        const {userName,email,password,phone,address,answer}=req.body;
         //validation
-        if(!userName || !email || !password || !address || !phone ){
+        if(!userName || !email || !password || !address || !phone ||!answer){
             return res.status(500).send({
                 success:false,
                 message:'Please provide all fields'
@@ -29,7 +29,9 @@ const registerController=async(req,res)=>{
             email,
             password:hashedPassword,
             address,
-            phone})
+            phone,
+            answer
+        })
         res.status(201).send({
             success:true,
             message:'Successfully Registered',
@@ -75,7 +77,7 @@ const loginController = async(req,res)=>{
                 message:"Invalid Credentials"
             })
         }
-        const token = await JWT.sign({id:user.id},process.env.JWT_SECRET_KEY,{expiresIn:"7d"})
+        const token = JWT.sign({id:user._id},process.env.JWT_SECRET_KEY,{expiresIn:"7d"})
 
         user.password=undefined;
         res.status(200).send({

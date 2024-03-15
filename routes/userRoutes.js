@@ -1,11 +1,20 @@
 const express = require("express");
-const { getUserController } = require("../controllers/userController");
+const { getUserController, updateUserController, resetPasswordController } = require("../controllers/userController");
+const authMiddleware = require("../middlewares/authMiddleware");
 
 const router = express.Router();
 
 //routes
-//GET || GET
-router.get("/getUser",getUserController)
+//GET USER|| GET
+router.get("/getUser",authMiddleware, getUserController)
+
+//UPDATE PROFILE
+router.put("/updateUser",authMiddleware,updateUserController)
+
+//RESET PASSWORD
+router.post('/resetPassword', authMiddleware, resetPasswordController)
+
+
 
 
 

@@ -31,6 +31,10 @@ const userSchema = new mongoose.Schema({
     profile:{
         type: String,
         default:"https://www.shutterstock.com/image-vector/user-icon-trendy-flat-style-260nw-418179865.jpg"
+    },
+    answer: {
+        type: String,
+        required: [true, "Answer is required"]
     }
 },
 {timestamps:true}
