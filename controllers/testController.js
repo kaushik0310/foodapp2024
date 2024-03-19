@@ -5,7 +5,7 @@ const testUserController = (req,res)=>{
         message:'test user data api',
        })
    } catch (error) {
-    console.log('errror in test api',error);
+    console.log('error in test api',error);
     
    }
     

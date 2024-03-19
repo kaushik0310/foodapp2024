@@ -1,6 +1,4 @@
 
-
-const { response } = require("express");
 const userModel = require("../models/userModel")
 const bcrypt = require("bcrypt")
 //GET USER INFO
@@ -109,4 +107,81 @@ const resetPasswordController = async(req,res)=>{
         
     }
 };
-module.exports={getUserController,updateUserController,resetPasswordController}
+
+//UPDATE PASSWORD
+
+const updatePasswordController =async(req,res)=>{
+   try {
+  
+     //find user
+     const user = await userModel.findById(req.body.id)
+     // const user = await userModel.findById({_id:req.body.id})
+
+     if(!user){
+        return res.status(404).send({
+            success:false,
+            message:"user not found"
+        })
+     };
+
+     //get data from user
+     const {oldPassword, newPassword} = req.body;
+     if(!oldPassword || !newPassword){
+       return res.status(500).send({
+            success:false,
+            message:"please provide old and new password"
+        })
+     }
+
+    
+      //compare old password
+      const isMatch = await bcrypt.compare(oldPassword,user.password);
+      if(!isMatch){
+          return res.status(500).send({
+              success:false,
+              message:"Invalid old password"
+          })
+      }
+
+           //hashing password
+           const hashedPassword = await bcrypt.hash(newPassword,10);
+           user.password = hashedPassword;
+           await user.save();
+           res.status(200).send({
+               success:true,
+               message:'password updated successfully',
+               user,
+           })
+
+   } catch (error) {
+    console.log(error);
+    res.status(500).send({
+        success:false,
+        message:"error in update password API",
+        error
+    })
+    
+   }
+
+}
+
+const deleteProfileController =async(req,res)=>{
+    try {
+        await userModel.findByIdAndDelete(req.params.id)
+        res.status(200).send({
+            success:true,
+            message:"Your account has been deleted successfully",
+
+        })
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success:false,
+            message:"error in delete profile api",
+            error
+        })
+        
+    }
+}
+module.exports={getUserController,updateUserController,resetPasswordController,updatePasswordController,deleteProfileController}

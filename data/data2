@@ -1,0 +1,27 @@
+{
+   "title":"burger king",
+    "imageUrl":"https://villagehearthstone.com/wp-content/uploads/2016/02/pizza-sample.jpg",
+    "foods":[
+        {
+            "dishName":"veg burger",
+            "dishpic":"https://villagehearthstone.com/wp-content/uploads/2016/02/pizza-sample.jpg",
+            "price": "100"
+       }
+    ],
+   "time":"10am to 10pm",
+    "pickup":"true",
+    "delivery":"false",
+    "isOpen":"true",
+    "logoUrl":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fsco.wikipedia.org%2Fwiki%2FFile%3APizza_Hut_logo.svg&psig=AOvVaw1uqK1UsM5_CcGQiV-SuEWJ&ust=1710853080152000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCPDk98Hu_YQDFQAAAAAdAAAAABAE",
+    "rating":"5",
+    "ratingCount":"5",
+    "code":"1234",
+    "coords":{
+        "id":"123456",
+    "latitude":"1234",
+    "latitudeDelta":"1234",
+    "longitude":"1234",
+    "longitudeDelta":"1234",
+    "address":"Mumbai, India"
+    }
+}
