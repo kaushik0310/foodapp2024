@@ -19,7 +19,7 @@ const registerController=async(req,res)=>{
                 success:false,
                 message:'Email Already registered please login'
             })
-        }
+        0}
         //hashing password
         const hashedPassword = await bcrypt.hash(password,10);
 

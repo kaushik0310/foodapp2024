@@ -8,7 +8,7 @@ const createRestaurantController= async(req,res)=>{
         const{
             title,
             imageUrl,
-            foods,
+            //foods,
             time,
             pickup,
             delivery,
@@ -32,7 +32,7 @@ const createRestaurantController= async(req,res)=>{
     const newRestaurant = new restaurantModel({
             title,
             imageUrl,
-            foods,
+            //foods,
             time,
             pickup,
             delivery,

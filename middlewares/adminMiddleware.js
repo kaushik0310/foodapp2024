@@ -16,8 +16,9 @@ module.exports = async (req,res,next) =>{
         console.log(error);
         res.status(500).send({
             success:false,
-            message:'Unauthorized user',
-            error
+            message:error.message
+            // message:'error in adminMiddleware api',
+            // error
         })
     }
 }

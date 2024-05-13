@@ -1,6 +1,6 @@
 
 const foodModel = require("../models/foodModel");
-const orderModel = require("../models/orderModel")
+const orderModel = require("../models/orderSchema")
 
 //create food
 const createFoodController = async(req,res)=>{
@@ -148,7 +148,7 @@ const getFoodByRestaurantController = async(req,res)=>{
 const updateFoodController =async(req,res)=>{
     try {
         const foodId = req.params.id;
-        if(!foodId){
+        if(!foodId){ 
             return res.status(404).send({
                 success:false,
                 message:"foodId not found"

@@ -9,9 +9,9 @@ const restaurantSchema = new mongoose.Schema({
    imageUrl: {
     type: String,
    },
-   foods:{
-    type: Array
-   },
+   //foods:{
+   // type: Array
+  // },
    time:{
     type:String,
    },
